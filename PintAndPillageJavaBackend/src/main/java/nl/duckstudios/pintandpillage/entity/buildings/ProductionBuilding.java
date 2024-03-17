@@ -114,7 +114,11 @@ public abstract class ProductionBuilding extends Building {
     }
 
     private boolean isAllowedToBuildUnit(Unit unitData) {
-        return this.unitsUnlockedAtLevel.stream().anyMatch(u -> super.getLevel() >= u.level && unitData.getUnitName() == u.unitType);
+        return this.unitsUnlockedAtLevel.stream().anyMatch(u -> getlevel() >= u.level && unitData.getUnitName() == u.unitType);
+    }
+
+    public int getlevel() {
+        return super.getLevel();
     }
 
     private void collectProduction() {
