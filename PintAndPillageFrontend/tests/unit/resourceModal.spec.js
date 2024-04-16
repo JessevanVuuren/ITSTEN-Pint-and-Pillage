@@ -28,6 +28,7 @@ beforeEach(() => {
     })
 
     resourceModalWrapper = shallowMount(ResourcesModal, {
+
         store,
         localVue,
     });
@@ -39,16 +40,24 @@ afterAll(() => {
 
 describe('ResourcesModal', () => {
     it('should displays buildingName correctly when created', async () => {
+        //Arrange
         const expectedText = "Mine - Lv 0"
+
+        //Act
         const actualText = resourceModalWrapper.find("#buildingName").text() //html
 
+        //Assert
         expect(actualText).toBe(expectedText)
     });
 
-    it('should displays resources per hour correctly when resources is 80 stone per hour', async () => {
+    it('should displays resources per hour correctly when displayed to screen', async () => {
+        //Arrange
         const expectedText = "1000000 Stone / Hour"
+
+        //Act
         const actualText = resourceModalWrapper.find("#buildingDescription").text()
 
+        //Assert
         expect(actualText).toBe(expectedText)
     });
 });

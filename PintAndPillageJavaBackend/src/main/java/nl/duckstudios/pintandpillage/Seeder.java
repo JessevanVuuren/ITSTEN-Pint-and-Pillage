@@ -96,7 +96,7 @@ public class Seeder {
                     put(ResourceType.Stone.name(), 10000);
                     put(ResourceType.Wood.name(), 10000);
                     put(ResourceType.Beer.name(), 10000);
-                    put(ResourceType.Hop.name(), 5);
+                    put(ResourceType.Hop.name(), 500);
                 }
             });
 
@@ -110,7 +110,7 @@ public class Seeder {
             TransportShip transportShip = new TransportShip();
 
             village2.addUnit(spearUnit, 200);
-            village2.addUnit(transportShip, 1);
+            village2.addUnit(transportShip, 100);
 
             this.villageDAO.save(village2);
         }
@@ -145,7 +145,7 @@ public class Seeder {
                     put(ResourceType.Stone.name(), 10000);
                     put(ResourceType.Wood.name(), 10000);
                     put(ResourceType.Beer.name(), 10000);
-                    put(ResourceType.Hop.name(), 5);
+                    put(ResourceType.Hop.name(), 500);
                 }
             });
 
@@ -159,8 +159,8 @@ public class Seeder {
             Spear spearUnit = new Spear();
             TransportShip transportShip = new TransportShip();
 
-            village.addUnit(spearUnit, 10);
-            village.addUnit(transportShip, 1);
+            village.addUnit(spearUnit, 100);
+            village.addUnit(transportShip, 100);
 
             this.villageDAO.save(village);
         }

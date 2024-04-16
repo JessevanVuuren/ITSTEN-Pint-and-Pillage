@@ -7,7 +7,7 @@
             <div>
                 <div class="worldRow" v-for="(cellLength, y) in renderedWorldmapTiles.length" :key="y">
                     <div class="worldTile" v-for="(cellWidth, x)  in renderedWorldmapTiles[0].length" :key="x + '_' + y" >
-                        <img  @click="openModal(x, y)" class="villageTile" v-if="renderedWorldmapTiles[x][y].village" :src="require('../assets/worldmap/' + renderedWorldmapTiles[x][y].village + '.png')"/>
+                        <img id="worldMapVillage" @click="openModal(x, y)" class="villageTile" v-if="renderedWorldmapTiles[x][y].village" :src="require('../assets/worldmap/' + renderedWorldmapTiles[x][y].village + '.png')"/>
                         <img class="tileWorldMap" height="30" :src="require('../assets/worldmap/' + renderedWorldmapTiles[x][y].tileType + '.png')"/>
                         <span v-if="renderedWorldmapTiles[x][y].Settleable">
                             <img @click="buildNewVillageModal(x,y)" class="tileWorldMap SettleableTile" v-show="showSettleTiles" src="../assets/worldmap/SettleIconWorldMap.png"/>

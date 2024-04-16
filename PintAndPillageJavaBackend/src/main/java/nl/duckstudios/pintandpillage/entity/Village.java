@@ -294,6 +294,12 @@ public class Village {
         this.totalDefence = this.unitsInVillage.stream()
                 .mapToInt(t -> (int) (t.getUnit().getDefence() *
                         (1 + 0.1f * this.getResearchLevel(t.getUnit().getResearchRequired())) * t.getAmount())).sum();
+
+        for(Building building : this.buildings) {
+            if (building instanceof IDefenceable) {
+                this.totalDefence += ((IDefenceable) building).getDefenceBonus();
+            }
+        }
     }
 
     private void createBuildableBuildingsList() {

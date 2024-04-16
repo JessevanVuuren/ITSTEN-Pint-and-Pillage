@@ -2,9 +2,9 @@
     <div>
         <div class="villageFrame" v-if="!pillageModalOpen && !scoutModalOpen">
             <p v-if="!checkForOwnVillage()">(Own village)</p>
-            <h1>{{properties.name}}</h1>
-            <h3>Player: {{properties.villageOwnerName}}</h3>
-            <h3>Points: {{properties.points}}</h3>
+            <h1 id="villageFrameName">{{properties.name}}</h1>
+            <h3 id="villageFramePlayer">Player: {{properties.villageOwnerName}}</h3>
+            <h3 id="villageFramePoints">Points: {{properties.points}}</h3>
             <div class="combatButtons" v-if="checkForOwnVillage()">
                 <button class="pillageButton" @click="pillageModalOpen = true">Pillage!</button>
 <!--                <button @click="scoutModalOpen = true">Send Scout</button>-->
@@ -29,7 +29,7 @@
                 this.$emit('close');
             },
             checkForOwnVillage: function () {
-                let currentUserId = this.$store.getters.village.villageOwnerId;
+                let currentUserId = this.$store.getters.village.villageId;
                 let selectedVillageUserId = this.properties.userId;
                 if (currentUserId != selectedVillageUserId){
                     return true;

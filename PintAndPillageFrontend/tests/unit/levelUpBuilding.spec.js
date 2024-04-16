@@ -59,10 +59,39 @@ afterAll(() => {
 })
 
 describe('LevelUpBuilding', () => {
-    it('should displays buildingName correctly when created', async () => {
+    it('Should be able to levelup building when enough resources', async () => {
+        //Arrange
+        const expectedOutput = true;
+
+        //Act
         const can_be_updated_result = resourceModalWrapper.vm.canBeLeveledUp();
 
-        expect(can_be_updated_result).toBe(true)
+        //Assert
+        expect(can_be_updated_result).toBe(expectedOutput)
+    });
+
+    it('Should not be able to levelup building when not enough resources', async () => {
+        //Arrange
+        const expectedOutput = false;
+        state.village.data.villageResources.Wood = 0;
+
+        //Act
+        const can_be_updated_result = resourceModalWrapper.vm.canBeLeveledUp();
+
+        //Assert
+        expect(can_be_updated_result).toBe(expectedOutput)
+    });
+
+    it('Should not be able to levelup building when not enough population', async () => {
+        //Arrange
+        const expectedOutput = false;
+        state.village.data.populationLeft = 0;
+
+        //Act
+        const can_be_updated_result = resourceModalWrapper.vm.canBeLeveledUp();
+
+        // Assert
+        expect(can_be_updated_result).toBe(expectedOutput)
     });
 });
 

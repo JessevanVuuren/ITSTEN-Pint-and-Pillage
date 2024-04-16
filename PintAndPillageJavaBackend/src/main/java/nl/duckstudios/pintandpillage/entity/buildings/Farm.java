@@ -26,12 +26,10 @@ public class Farm extends ResourceBuilding {
         return 0;
     }
 
-    //    private int updateResourcesPerHour() {
-//        return (int)(20 + 12 * Math.pow(super.getLevel(), 1.2));
-//    }
     private int updateResourcesPerHour() {
-        return 1000000;
+        return (int) (20 + 12 * Math.pow(super.getLevel(), 1.2));
     }
+
 
     @Override
     public void updateBuilding() {
