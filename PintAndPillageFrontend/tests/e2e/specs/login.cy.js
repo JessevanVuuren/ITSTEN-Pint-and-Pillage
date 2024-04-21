@@ -26,7 +26,7 @@ describe("login logic with different login combinations", () => {
     cy.get('span').contains('Something went wrong').should('exist');
   })
 
-  it("Should not login when used wrong credentials", () => {
+  it("Should give feedback when 1 or more fields are not filled in", () => {
     cy.visit("/login")
 
     cy.get("button[class='submitButton']").click()

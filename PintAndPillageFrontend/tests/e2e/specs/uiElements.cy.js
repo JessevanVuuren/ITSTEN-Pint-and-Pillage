@@ -5,7 +5,7 @@ beforeEach(() => {
 
 
 describe("testing graphical user interface elements", () => { 
-  it("should open battle log when clicked battle log button", () => { // 27
+  it("Should open battle log when clicked battle log button", () => { // 27
     cy.wait(1000)
 
     cy.get("button[class='combatButtonHeader']").click()
@@ -16,7 +16,7 @@ describe("testing graphical user interface elements", () => {
     cy.get("h3").contains("You didn't go in combat yet, what are you doing you lazy viking!").should("exist")
   })
 
-  it("should open scoreboard when clicked battle log button", () => { // 35
+  it("Should change seasons when user set seasons of in settings menu", () => { // 35
     cy.wait(1000)
 
     cy.get("button[class='settingsButton']").click()

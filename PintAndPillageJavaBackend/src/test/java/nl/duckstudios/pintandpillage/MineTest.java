@@ -1,5 +1,6 @@
 package nl.duckstudios.pintandpillage;
 
+import nl.duckstudios.pintandpillage.Exceptions.BuildingConditionsNotMetException;
 import nl.duckstudios.pintandpillage.entity.Village;
 import nl.duckstudios.pintandpillage.entity.buildings.Mine;
 import org.junit.jupiter.api.Test;
@@ -12,6 +13,7 @@ import java.util.Map;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -43,6 +45,46 @@ public class MineTest {
         //Assert
         assertThat(mine.getResourcesPerHour(), is(expectedOutput));
     }
+
+    @Test
+    void Shoud_notBeAbleToLevelUp_when_NotEnoughResources(){
+        //Arrange
+        Mine mine = new Mine();
+        Village village = mock(Village.class);
+        mine.setVillage(village);
+
+        Map<String, Integer> villageResources = new HashMap<>();
+        villageResources.put("Wood", 2);
+
+        //Act
+        when(village.getVillageResources()).thenReturn(villageResources);
+
+
+        assertThrows(BuildingConditionsNotMetException.class, () -> {
+            mine.levelUp();
+        });
+    }
+
+    @Test
+    void Shoud_notBeAbleToLevelUp_when_NotEnoughPopulation(){
+        //Arrange
+        Mine mine = new Mine();
+        Village village = mock(Village.class);
+        mine.setVillage(village);
+
+        Map<String, Integer> villageResources = new HashMap<>();
+        villageResources.put("Wood", 200);
+
+        //Act
+        when(village.getVillageResources()).thenReturn(villageResources);
+        when(village.hasEnoughPopulation(anyInt())).thenReturn(false);
+
+
+        assertThrows(BuildingConditionsNotMetException.class, () -> {
+            mine.levelUp();
+        });
+    }
+
 
     @Test
     void Should_inceaseCost_when_upgradingAMine() {

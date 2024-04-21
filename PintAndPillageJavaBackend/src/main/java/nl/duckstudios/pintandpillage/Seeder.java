@@ -109,8 +109,8 @@ public class Seeder {
             Spear spearUnit = new Spear();
             TransportShip transportShip = new TransportShip();
 
-            village2.addUnit(spearUnit, 200);
-            village2.addUnit(transportShip, 100);
+            village2.addUnit(spearUnit, 5);
+            village2.addUnit(transportShip, 5);
 
             this.villageDAO.save(village2);
         }
@@ -159,8 +159,8 @@ public class Seeder {
             Spear spearUnit = new Spear();
             TransportShip transportShip = new TransportShip();
 
-            village.addUnit(spearUnit, 100);
-            village.addUnit(transportShip, 100);
+            village.addUnit(spearUnit, 5);
+            village.addUnit(transportShip, 5);
 
             this.villageDAO.save(village);
         }

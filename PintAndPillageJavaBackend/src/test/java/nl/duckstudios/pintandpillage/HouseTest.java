@@ -15,7 +15,7 @@ public class HouseTest {
         int level = 1;
         int expectedOutput = 21;
         House house = new House();
-        house.setLevel(level); // Set level directly on the spy
+        house.setLevel(level);
 
         // Act
         house.updateBuilding();
